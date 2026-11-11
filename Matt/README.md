@@ -1,6 +1,6 @@
 # Matt: O(N²) greedy algorithms for QUBO ground states
 
-Two greedy algorithms, tested on the 10%-filled integer QUBO ensemble of Boettcher, PRR 1, 033142 (2019), Fig. 6, and compared with his reference energies. In both, every spin is fixed once along its local field, and afterwards only flips that lower the energy are made. Each folder has a step-by-step README, a plot, and a standalone C file.
+Two greedy algorithms. In both, every spin is fixed once along its local field, and afterwards only flips that lower the energy are made. Each folder has a step-by-step README, a plot, and a standalone C file.
 
 | Folder | How the next spin is chosen | Error vs reference, N = 31 / 511 / 4095 |
 |---|---|---|
