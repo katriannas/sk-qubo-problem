@@ -9,7 +9,7 @@ An O(N²) greedy algorithm for dense QUBO ground states. Each spin is fixed exac
 | Term | Meaning |
 |---|---|
 | x_i ∈ {0,1} | the QUBO variables, i = 1 … N |
-| q_ij | symmetric coupling matrix with zero diagonal. In the test ensemble (Boettcher, PRR 1, 033142, Fig. 6), each entry is an integer uniform in [−100, 100], and it is nonzero with probability 0.1. |
+| q_ij | symmetric coupling matrix with zero diagonal. In the test ensemble (Fig. 6), each entry is an integer uniform in [−100, 100], and it is nonzero with probability 0.1. |
 | E | the cost to minimize: E = −Σ_{i,j} q_ij x_i x_j, summed over both orders of each pair |
 | e = E/N^{3/2} | the energy density, the quantity plotted |
 | s_i = 2x_i − 1 ∈ {−1,+1} | spin form. During the greedy, s_i = 0 means "not fixed yet". |
@@ -37,7 +37,7 @@ An O(N²) greedy algorithm for dense QUBO ground states. Each spin is fixed exac
 
 **Cost.** Each step of 2 is one O(N) scan plus at most two O(N) row updates. Step 3 makes only about 0.01N flips. The total is about 3N² operations, so O(N²). Measured times are 0.7 ms at N = 511, 3 ms at N = 1023 and 48 ms at N = 4095 on one Apple-silicon core.
 
-**Results.** Both curves average fresh random instances of the Fig. 6 ensemble at each N: 20 000 instances at small N, down to 60 at N = 4095. Each average is compared with Boettcher's Fig. 6 data at the same N. Error = (⟨e⟩ − e_ref)/|e_ref|.
+**Results.** Both curves average fresh random instances of the Fig. 6 ensemble at each N: 20 000 instances at small N, down to 60 at N = 4095. Each average is compared with the Fig. 6 reference data at the same N. Error = (⟨e⟩ − e_ref)/|e_ref|.
 
 | | N = 31 | 127 | 511 | 1023 | 4095 |
 |---|---|---|---|---|---|

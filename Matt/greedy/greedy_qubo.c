@@ -9,7 +9,7 @@
 //              instance.txt: first line N, then one line "i j q_ij" per nonzero pair (1-based, i < j).
 //              Prints E, E/N^{3/2}, the time, and the 0/1 solution.
 //           ./greedy_qubo -gen N ninst seed
-//              Generates ninst random instances of the Fig. 6 ensemble of Boettcher, PRR 1, 033142 (2019)
+//              Generates ninst random instances of the Fig. 6 ensemble
 //              (integers uniform in [-100,100], each pair nonzero with probability 0.1), prints the mean of
 //              E/N^{3/2} +- standard error, and the reference value from that paper's data where available.
 #include <math.h>
@@ -93,7 +93,7 @@ static uint64_t splitmix(uint64_t *s) {
 }
 static double now(void) { struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t); return t.tv_sec + 1e-9 * t.tv_nsec; }
 
-// <E/N^{3/2}> for the Fig. 6 ensemble from Boettcher's data (tau-EO, averaged over many instances)
+// <E/N^{3/2}> for the Fig. 6 ensemble (reference data, tau-EO averaged over many instances)
 static const double REF[][2] = { {31, -9.666594}, {44, -10.073529}, {63, -10.317722}, {80, -10.425666}, {100, -10.508364},
     {127, -10.563889}, {160, -10.611198}, {255, -10.678669}, {511, -10.749101}, {1023, -10.775857}, {4095, -10.790297} };
 
@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
         double mu = a / K, se = K > 1 ? sqrt((aa / K - mu * mu) / (K - 1)) : 0;
         printf("N=%d  instances=%d  <E/N^1.5> = %.4f +- %.4f   %.3f ms/instance\n", n, K, mu, se, 1e3 * T / K);
         for (size_t r = 0; r < sizeof REF / sizeof REF[0]; r++) if ((int)REF[r][0] == n)
-            printf("reference (Boettcher, Fig. 6 data): %.4f   difference: %+.2f%%\n", REF[r][1], 100 * (mu - REF[r][1]) / -REF[r][1]);
+            printf("reference (Fig. 6 data): %.4f   difference: %+.2f%%\n", REF[r][1], 100 * (mu - REF[r][1]) / -REF[r][1]);
         return 0;
     }
     if (argc < 2) { fprintf(stderr, "usage: %s instance.txt  |  %s -gen N ninst seed\n", argv[0], argv[0]); return 1; }
