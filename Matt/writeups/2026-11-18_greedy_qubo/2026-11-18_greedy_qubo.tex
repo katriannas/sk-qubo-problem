@@ -80,8 +80,10 @@ than $1$, which would be the squared signal-to-noise ratio $f_i^2/R_i$.
 will take (start: $p_j = \operatorname{sign}(h_j)$), used only to choose the order. It gives the predicted rest of the
 field and an anticipated field
 \[
-  P_i = \sum_{j\ \text{unfixed}} q_{ij}\, p_j, \qquad u_i = f_i + A_t P_i, \qquad
+  \begin{gathered}
+  P_i = \sum_{j\ \text{unfixed}} q_{ij}\, p_j, \qquad u_i = f_i + A_t P_i, \\
   A_t = A\left(0.6 + 2\,\frac{n_{\rm unfixed}}{N}\right), \qquad A = \min(0.4,\ 0.05\log_2 N - 0.12).
+  \end{gathered}
 \]
 Each step fixes the spin with the highest
 \[
@@ -130,7 +132,7 @@ so the total is about $2N^2$ ($3N^2$) operations: $O(N^2)$.
 \end{itemize}
 
 \begin{table}[H]
-  \centering\small
+  \centering\small\setlength{\tabcolsep}{4pt}
   \begin{tabular}{lrrrrrrrrrrr}
     \toprule
     $N$ & 31 & 44 & 63 & 80 & 100 & 127 & 160 & 255 & 511 & 1023 & 4095 \\
