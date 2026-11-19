@@ -125,10 +125,16 @@ so the total is about $2N^2$ ($3N^2$) operations: $O(N^2)$.
   lie $0.9$ to $1.6\%$ below the table for $N \ge 63$, and agree with it at $N = 31$ ($+0.14 \pm 0.20\%$), where a
   heuristic almost surely finds the true ground states. Greedy sits between the two: $0.18$--$0.62\%$ (confidence)
   and $0.11$--$0.30\%$ (look-ahead) above the best found (Fig.~\ref{fig:best}).
-  \item \textbf{Open assumption:} We assumed a zero diagonal and that $0$ may be drawn as a ``nonzero'' value; Stefan's
-  description does not fix either. Excluding $0$ would change the energy scale by only about $0.25\%$. A nonzero diagonal
-  would add a linear term and shift every $N$; the agreement at $N=31$ argues against it, but this is untested and
-  worth confirming with Stefan.
+  \item \textbf{A nonzero diagonal does not explain it:} Stefan's description does not say whether the diagonal of $q$
+  is zero. A diagonal entry adds $-q_{ii}x_i$ to $E$ and $q_{ii}$ to $h_i$. Rerunning both greedy rules on the same
+  off-diagonal instances with a diagonal filled like the other entries (10\%) lowers the energy by $1.1\%$ at $N=31$,
+  $0.18\%$ at $N=127$ and $0.05\%$ or less for $N \ge 511$; a fully filled diagonal lowers it by $11.5\%$ at $N=31$.
+  So a diagonal in Stefan's ensemble would make his table \emph{lower}, not higher, and would leave our zero-diagonal
+  runs about $1\%$ above it at $N=31$, where we in fact agree with it. It also changes almost nothing at large $N$,
+  where our margin is largest. The $N=31$ agreement points to a zero diagonal in the table, and in either case the
+  diagonal cannot be why we land below it (Fig.~\ref{fig:diag}).
+  \item \textbf{Remaining open detail:} Whether $0$ may be drawn as a ``nonzero'' value. Excluding it would make
+  every coupling slightly stronger and shift all energies by about $0.25\%$, too little to explain the gap.
 \end{itemize}
 
 \begin{table}[H]
@@ -202,6 +208,20 @@ correction term does not reach them. The number in parentheses is the standard e
   Fig.~\ref{fig:energy} combined with the confidence greedy's gap. All three sit above the best found; the table is
   furthest above for $N \ge 63$ and agrees with it at $N = 31$. From the same-instance runs and Stefan's table.}
   \label{fig:best}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{fig_diag.pdf}
+  \caption{\textbf{What a nonzero diagonal would do:} (a) Error against the table with a zero diagonal (solid, as in
+  Fig.~\ref{fig:energy}) and with a diagonal filled like the other entries (dashed): each diagonal entry nonzero with
+  probability 0.1, then an integer from $[-100,100]$. The dashed points are the solid ones shifted by the paired
+  change measured for each rule. (b) How much the diagonal lowers the greedy energy, for the
+  10\% diagonal and for a fully filled one, as a percent of the table value. Both come from rerunning the confidence and
+  look-ahead greedy on the same off-diagonal instances with and without the diagonal (20\,000 instances at small $N$,
+  down to 60 at $N=4095$); the two rules give the same shift, so (b) shows the confidence greedy. The effect is large
+  at small $N$ and falls off faster than $1/N$.}
+  \label{fig:diag}
 \end{figure}
 
 \end{document}
